@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "561907570402",
+    "project_id": "ci-cd-fastlane-demo-app",
+    "storage_bucket": "ci-cd-fastlane-demo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561907570402:android:6941dce47c8730faea30bb",
+        "android_client_info": {
+          "package_name": "com.theentertainerme.azureci_cdfastlane"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNLqyvHbSljrRhQmD89i_hpRjHWIYHXA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,53 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Builds a dev env app and release it to FAD"
+  lane :dev do
+    gradle(task: "clean")
+    gradle(task: "clean assembleRelease")
+
+    firebase_app_distribution(
+        app: "1:561907570402:android:6941dce47c8730faea30bb",
+        service_credentials_file: "fad.json",
+        release_notes_file: "release-notes.txt",
+        groups: "qateam"
+    )
+  end
+
+  desc "Build a prod env app and release it to Play store internal testing"
+  lane :prod do
+    gradle(task: "clean")
+    gradle(
+    task: "bundle",
+    build_type: "Release"
+    )
+    crashlytics
+    upload_to_play_store(
+    track: "internal"
+    )
+  
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease")
+    upload_to_play_store
+  end
+end
